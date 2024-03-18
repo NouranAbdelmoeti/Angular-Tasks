@@ -1,0 +1,15 @@
+<h1>Your cart</h1>
+@for(item of cartService.getItems(); track item.id){
+    <div class="image">
+    <img [src]="item.image" style="width: 200px;" alt="Card image" > 
+    <p>{{item.name}}</p> 
+    <p >{{item.description}}</p>
+    <p >{{item.price}}</p>
+    <button (click)="deleteFromCart(item)" class="btn btn-danger">Delete</button>
+    </div>
+
+}
+<div style="padding:20px">
+    <h1>Total: {{cartService.getTotal()}}</h1>
+    </div>
+    <app-products></app-products>

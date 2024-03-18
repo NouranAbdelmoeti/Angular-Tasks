@@ -1,0 +1,35 @@
+<div class="cont p-2" >
+        
+             @for ( item of ProductList; track item.id) {
+                <div class="card relative"  style="width: 18rem;" appProductCard> 
+                    @if(item.quantity == 1){
+                        <div class="cards"></div>
+                    }
+                    <img [src]="item.image" class="card-img-top" alt="Card image"> 
+                    <h5 class="card-title">{{item.name}}</h5> 
+                    <p class="card-text">{{item.description}}</p>
+                    <p class="card-text">{{item.price}}</p>
+                   
+                    <!--<button href="#" class="btn btn-primary" [disabled]="item.quantity === 0" (click)="buyProduct(item)">Add</button>-->
+                    <button href="#" class="btn btn-success" [disabled]="item.quantity === 0" (click)="AddToCart(item)">Add to Cart</button>
+
+                    @switch (item.quantity) {
+                        @case(1){
+                            <p class="text-danger">Hurry up! only 1 left</p>
+                        }
+                        @case (2) {
+                            <p class="text-primary">Only 2 items left!</p>
+                        }
+                        @default {
+                            <p class="text-primary">{{item.quantity}} products available</p>
+                        }
+                        
+                    }
+                    @if(item.quantity == 0){
+                        <p class="text-danger">Item out of stock</p>
+                    }
+                   
+                </div>
+                }
+</div>
+
